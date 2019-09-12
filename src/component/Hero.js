@@ -4,9 +4,14 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { useStyles } from '../styles';
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 
-function Hero() {
+function Hero({ history }) {
+
+  const handleClick = (path) => {
+    history.push(path)
+  }
+
   const classes = useStyles();
 
   return (
@@ -18,10 +23,14 @@ function Hero() {
         <div className={classes.heroButtons}>
           <Grid container spacing={2} justify="center">
             <Grid item>
-              <Link to="/">Home</Link>
+              <Button onClick={() => { handleClick('/') }} variant="contained" color="primary">
+                Home
+              </Button>
             </Grid>
             <Grid item>
-              <Link to="/about">About</Link>
+              <Button onClick={() => { handleClick('/about') }} variant="outlined" color="primary">
+                About
+              </Button>
             </Grid>
           </Grid>
         </div>
@@ -30,4 +39,4 @@ function Hero() {
   )
 }
 
-export default Hero;
+export default withRouter(Hero);
