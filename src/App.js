@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Header from './component/Header';
+import Footer from './component/Footer';
+import Hero from './component/Hero';
+import { useStyles } from './styles';
+import Home from './pages/Home';
+import About from './pages/About';
 
 function App() {
+  const classes = useStyles();
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <CssBaseline />
+      <div>
+        <Header />
+        <Hero />
+        <Container className={classes.cardGrid} maxWidth="md">
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+        </Container>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
