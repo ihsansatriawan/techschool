@@ -35,6 +35,16 @@ function Hero({ history }) {
                 About
               </Button>
             </Grid>
+            <Grid item>
+              <Button onClick={() => { handleClick('/pokemon') }} variant="outlined" color="primary">
+                Pokemon
+              </Button>
+            </Grid>
+            {/* <Grid item>
+              <Button onClick={() => { handleClick('/pokemon/detail') }} variant="outlined" color="primary">
+                Pokemon Detail
+              </Button>
+            </Grid> */}
           </Grid>
         </div>
       </Container>
